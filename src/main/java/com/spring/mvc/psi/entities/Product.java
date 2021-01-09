@@ -5,28 +5,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
-
     @Id
     @GeneratedValue
-    private Long id;
-
+    private Integer id;
+    
     @Column
     private String name;
-
-    @Column(name = "image", columnDefinition = "clob") // clob 文字型態的大資料, blob 二進位型態的大資料
+    
+    @Column(name = "image", columnDefinition = "clob") // clob 文字型代的大資料, blob 二進位型代的大資料
     @Lob
-    private String image; // 將圖像轉成 base64 後存入
-
-    public Long getId() {
+    private String image; // 將圖像轉 base64 後存入
+    
+    @ManyToOne
+    private User user;
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,4 +49,12 @@ public class Product {
         this.image = image;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 }

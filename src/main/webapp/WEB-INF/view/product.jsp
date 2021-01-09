@@ -1,11 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix = "form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
-<!-- 1像素透明 = R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 -->
-<c:set var="space" value="data:image/jpeg;base64, R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
 <html>
     <head>
         <!-- Head -->
@@ -47,12 +41,12 @@
             <%@include file="include/menu.jspf"  %>
 
             <div id="main">
-
+                
                 <div class="header">
                     <h1>Product</h1>
-                    <h2>CRUD</h2>
+                    <h2>商品</h2>
                 </div>
-
+                
                 <table class="pure-table" style="border: none">
                     <td valign="top">
                         <!-- 表單 -->
@@ -72,7 +66,7 @@
                                 <input type="hidden" id="_method" name="_method" value="${ _method }" readonly /><p />
                                 <button type="submit" class="pure-button pure-button-primary">${ _method }</button>
                             </fieldset>
-
+                            
                         </form:form>
                     </td>
                     <td valign="top">
@@ -86,6 +80,7 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Image</th>
+                                            <th>User</th>
                                             <th>Update</th>
                                             <th>Delete</th>
                                         </tr>
@@ -97,6 +92,7 @@
                                                 <td>${ p.id }</td>
                                                 <td>${ p.name }</td>
                                                 <td><img style="cursor: zoom-in" id="previewImage" src="${ p.image==null?space:p.image }" width="${ p.image==null?'0':'100' }" /></td>
+                                                <td>${ p.user.name }</td>
                                                 <td><a href="${pageContext.request.contextPath}/mvc/psi/product/${ p.id }">Update</a></td>
                                                 <td><a href="${pageContext.request.contextPath}/mvc/psi/product/delete/${ p.id }">Delete</a></td>
                                             </tr>
@@ -107,9 +103,9 @@
                         </form>
                     </td>
                 </table>
-
-
-
+                
+                
+                
             </div>
         </div>
         <!-- Foot -->
