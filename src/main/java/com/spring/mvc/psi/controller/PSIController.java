@@ -2,6 +2,7 @@ package com.spring.mvc.psi.controller;
 
 import com.spring.mvc.psi.entities.Product;
 import com.spring.mvc.psi.entities.Purchase;
+import com.spring.mvc.psi.entities.Sales;
 import com.spring.mvc.psi.entities.User;
 import com.spring.mvc.psi.repository.Inventory2Repository;
 import com.spring.mvc.psi.repository.InventoryRepository;
@@ -36,7 +37,7 @@ public class PSIController {
     private UserRepository userRepository;
 
     @Autowired
-    private PurchaseRepository purchasetRepository;
+    private PurchaseRepository purchaseRepository;
 
     @Autowired
     private SalesRepository salesRepository;
@@ -99,7 +100,7 @@ public class PSIController {
     // 讀取進貨
     @GetMapping(value = {"/purchase"})
     public String readPurchase(Model model) {
-        model.addAttribute("purchases", purchasetRepository.findAll());
+        model.addAttribute("purchases", purchaseRepository.findAll());
         model.addAttribute("inventories2", inventory2Repository.findAll());
         return "purchase";
     }
@@ -121,8 +122,44 @@ public class PSIController {
         purchase.setQuantity(quantity);
         purchase.setUser(user);
         // 儲存
-        purchasetRepository.saveAndFlush(purchase);
+        purchaseRepository.saveAndFlush(purchase);
         return "redirect: ./purchase";
+    }
+
+    // 讀取銷貨
+    @GetMapping(value = {"/sales"})
+    public String readSales(Model model) {
+        model.addAttribute("sales", salesRepository.findAll());
+        model.addAttribute("inventories2", inventory2Repository.findAll());
+        return "sales";
+    }
+
+    @PostMapping(value = {"/sales"},
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String createSales(@RequestBody MultiValueMap<String, String> form, HttpSession session) {
+        // 取得表單資料
+        Integer pid = Integer.parseInt(form.getFirst("pid"));
+        Integer quantity = Integer.parseInt(form.getFirst("quantity"));
+        Integer price = Integer.parseInt(form.getFirst("price"));
+        // 取得操作的使用者
+        User user = userRepository.getByName(session.getAttribute("username") + "");
+        // 建立 Sales 物件
+        Sales sales = new Sales();
+        sales.setProduct(productRepository.findOne(pid));
+        sales.setPrice(price);
+        sales.setQuantity(quantity);
+        sales.setUser(user);
+        // 儲存
+        salesRepository.saveAndFlush(sales);
+        return "redirect: ./sales";
+    }
+
+    // 讀取庫存
+    @GetMapping(value = {"/inventory"})
+    public String readInventory(Model model) {
+        model.addAttribute("inventories", inventoryRepository.findAll());
+        model.addAttribute("inventories2", inventory2Repository.findAll());
+        return "inventory";
     }
 
 }
