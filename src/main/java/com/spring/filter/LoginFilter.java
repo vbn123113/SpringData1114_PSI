@@ -22,7 +22,7 @@ public class LoginFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        String username = "Vincent";
+        String username = "Rau";//Vincent
         HttpSession session = req.getSession();
         session.setAttribute("username", username);
         chain.doFilter(req, res);
