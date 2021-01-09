@@ -1,0 +1,762 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 262160 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=3344, tid=0x0000000000001f18
+#
+# JRE version: OpenJDK Runtime Environment (8.0_232-b09) (build 1.8.0_232-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.232-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000018ba7000):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7960, stack(0x0000000019a60000,0x0000000019b60000)]
+
+Stack: [0x0000000019a60000,0x0000000019b60000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:   1087 1518       4       java.net.URLClassLoader$1::run (5 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000018bea000 JavaThread "Service Thread" daemon [_thread_blocked, id=8012, stack(0x0000000019c60000,0x0000000019d60000)]
+  0x0000000018bba800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=7420, stack(0x0000000019b60000,0x0000000019c60000)]
+=>0x0000000018ba7000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=7960, stack(0x0000000019a60000,0x0000000019b60000)]
+  0x0000000018ba3000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=7108, stack(0x0000000019960000,0x0000000019a60000)]
+  0x0000000018bb3800 JavaThread "Attach Listener" daemon [_thread_blocked, id=2384, stack(0x0000000019860000,0x0000000019960000)]
+  0x0000000018bb2800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6856, stack(0x0000000019760000,0x0000000019860000)]
+  0x000000001805a000 JavaThread "Finalizer" daemon [_thread_blocked, id=2388, stack(0x0000000019660000,0x0000000019760000)]
+  0x0000000018056800 JavaThread "Reference Handler" daemon [_thread_blocked, id=7716, stack(0x0000000019560000,0x0000000019660000)]
+  0x00000000032a8000 JavaThread "main" [_thread_in_native, id=7192, stack(0x0000000001620000,0x0000000001720000)]
+
+Other Threads:
+  0x0000000017f98000 VMThread [stack: 0x0000000019460000,0x0000000019560000] [id=5608]
+  0x0000000018bec000 WatcherThread [stack: 0x0000000019d60000,0x0000000019e60000] [id=7356]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+OutOfMemory and StackOverflow Exception counts:
+OutOfMemoryError java_heap_errors=1
+
+heap address: 0x0000000080a00000, size: 2038 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 38400K, used 13273K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 24% used [0x00000000d5900000,0x00000000d60f9718,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7e80000,0x00000000d837cf78,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 2970K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 3% used [0x0000000080a00000,0x0000000080ce6b68,0x0000000085f80000)
+ Metaspace       used 13638K, capacity 13860K, committed 14080K, reserved 1060864K
+  class space    used 1607K, capacity 1685K, committed 1792K, reserved 1048576K
+
+Card table byte_map: [0x0000000012800000,0x0000000012c00000] byte_map_base: 0x00000000123fb000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006ae18170
+ Begin Bits: [0x00000000132b0000, 0x0000000015288000)
+ End Bits:   [0x0000000015288000, 0x0000000017260000)
+
+Polling page: 0x0000000001200000
+
+CodeCache: size=245760Kb used=5150Kb max_used=5161Kb free=240609Kb
+ bounds [0x0000000003440000, 0x0000000003950000, 0x0000000012440000]
+ total_blobs=1867 nmethods=1538 adapters=239
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 1.026 Thread 0x0000000018bba800 nmethod 1416 0x00000000038fc7d0 code [0x00000000038fc940, 0x00000000038fcc70]
+Event: 1.029 Thread 0x0000000018bba800 1417       3       java.util.LinkedHashMap$LinkedEntryIterator::next (5 bytes)
+Event: 1.029 Thread 0x0000000018bba800 nmethod 1417 0x00000000038fc290 code [0x00000000038fc400, 0x00000000038fc6e8]
+Event: 1.029 Thread 0x0000000018bba800 1418       3       java.util.LinkedHashMap$LinkedEntryIterator::next (5 bytes)
+Event: 1.029 Thread 0x0000000018bba800 nmethod 1418 0x0000000003908050 code [0x00000000039081c0, 0x00000000039083c8]
+Event: 1.029 Thread 0x0000000018bba800 1419       3       java.util.HashMap::<init> (8 bytes)
+Event: 1.029 Thread 0x0000000018bba800 nmethod 1419 0x0000000003908450 code [0x00000000039085e0, 0x0000000003908768]
+Event: 1.030 Thread 0x0000000018bba800 1421       3       java.lang.reflect.Constructor::setConstructorAccessor (21 bytes)
+Event: 1.030 Thread 0x0000000018bba800 nmethod 1421 0x0000000003908810 code [0x0000000003908980, 0x0000000003908d28]
+Event: 1.030 Thread 0x0000000018bba800 1420       1       java.lang.reflect.Constructor::getConstructorAccessor (5 bytes)
+Event: 1.030 Thread 0x0000000018bba800 nmethod 1420 0x0000000003908e50 code [0x0000000003908fa0, 0x00000000039090b0]
+Event: 1.031 Thread 0x0000000018bba800 1424       3       org.eclipse.sisu.bean.BeanPropertyField::getName (8 bytes)
+Event: 1.031 Thread 0x0000000018bba800 nmethod 1424 0x0000000003909110 code [0x0000000003909260, 0x0000000003909450]
+Event: 1.031 Thread 0x0000000018bba800 1422       1       org.eclipse.sisu.plexus.RequirementImpl::hint (5 bytes)
+Event: 1.031 Thread 0x0000000018bba800 nmethod 1422 0x0000000003909510 code [0x0000000003909660, 0x0000000003909770]
+Event: 1.031 Thread 0x0000000018bba800 1423       1       org.eclipse.sisu.plexus.RequirementImpl::optional (5 bytes)
+Event: 1.031 Thread 0x0000000018bba800 nmethod 1423 0x00000000039097d0 code [0x0000000003909920, 0x0000000003909a30]
+Event: 1.032 Thread 0x0000000018bba800 1425       3       java.lang.System::getProperty (25 bytes)
+Event: 1.032 Thread 0x0000000018bba800 nmethod 1425 0x0000000003909a90 code [0x0000000003909c60, 0x000000000390a2c8]
+Event: 1.032 Thread 0x0000000018bba800 1426       3       com.google.common.collect.ImmutableEntry::<init> (15 bytes)
+Event: 1.032 Thread 0x0000000018bba800 nmethod 1426 0x000000000390a550 code [0x000000000390a6c0, 0x000000000390a8f0]
+Event: 1.032 Thread 0x0000000018bba800 1427       3       com.google.common.collect.AbstractMapEntry::<init> (5 bytes)
+Event: 1.033 Thread 0x0000000018bba800 nmethod 1427 0x000000000390a9d0 code [0x000000000390ab20, 0x000000000390acd0]
+Event: 1.033 Thread 0x0000000018bba800 1428       3       sun.reflect.ConstructorAccessorImpl::<init> (5 bytes)
+Event: 1.033 Thread 0x0000000018bba800 nmethod 1428 0x000000000390ad90 code [0x000000000390af00, 0x000000000390b110]
+Event: 1.033 Thread 0x0000000018bba800 1429       3       com.google.common.collect.AbstractMapBasedMultimap$AsMap$AsMapIterator::hasNext (10 bytes)
+Event: 1.033 Thread 0x0000000018bba800 nmethod 1429 0x000000000390b1d0 code [0x000000000390b340, 0x000000000390b568]
+Event: 1.033 Thread 0x0000000018bba800 1430       3       com.google.inject.internal.InjectorImpl::getProviderOrThrow (28 bytes)
+Event: 1.033 Thread 0x0000000018bba800 nmethod 1430 0x000000000390b610 code [0x000000000390b7a0, 0x000000000390bd38]
+Event: 1.033 Thread 0x0000000018bba800 1431       3       com.google.inject.internal.InjectorImpl$2::<init> (20 bytes)
+Event: 1.033 Thread 0x0000000018bba800 nmethod 1431 0x000000000390bf90 code [0x000000000390c0e0, 0x000000000390c2d0]
+Event: 1.034 Thread 0x0000000018bba800 1432       3       java.util.Properties::getProperty (46 bytes)
+Event: 1.034 Thread 0x0000000018bba800 nmethod 1432 0x000000000390c390 code [0x000000000390c520, 0x000000000390ca38]
+Event: 1.034 Thread 0x0000000018bba800 1433       3       com.google.inject.spi.ProviderLookup$1::get (33 bytes)
+Event: 1.034 Thread 0x0000000018bba800 nmethod 1433 0x000000000390cb50 code [0x000000000390cd00, 0x000000000390d1d8]
+Event: 1.034 Thread 0x0000000018bba800 1436   !   3       org.eclipse.sisu.inject.RankedBindings$Itr::hasNext (107 bytes)
+Event: 1.035 Thread 0x0000000018bba800 nmethod 1436 0x000000000390d410 code [0x000000000390d660, 0x000000000390e958]
+Event: 1.035 Thread 0x0000000018bba800 1435   !   3       com.google.inject.internal.MembersInjectorImpl::notifyListeners (71 bytes)
+Event: 1.035 Thread 0x0000000018bba800 nmethod 1435 0x000000000390f2d0 code [0x000000000390f580, 0x0000000003910b88]
+Event: 1.035 Thread 0x0000000018bba800 1439   !   3       org.eclipse.sisu.inject.DefaultBeanLocator::locate (122 bytes)
+Event: 1.036 Thread 0x0000000018bba800 nmethod 1439 0x00000000039116d0 code [0x0000000003911960, 0x0000000003912c18]
+Event: 1.036 Thread 0x0000000018bba800 1438       3       com.google.inject.Key$AnnotationInstanceStrategy::getAnnotationType (10 bytes)
+Event: 1.036 Thread 0x0000000018bba800 nmethod 1438 0x00000000039134d0 code [0x0000000003913640, 0x0000000003913868]
+Event: 1.036 Thread 0x0000000018bba800 1437       3       org.eclipse.sisu.inject.RankedSequence$Itr::next (47 bytes)
+Event: 1.037 Thread 0x0000000018bba800 nmethod 1437 0x0000000003913910 code [0x0000000003913a80, 0x0000000003913db8]
+Event: 1.037 Thread 0x0000000018bba800 1434   !   3       com.google.inject.internal.InjectorImpl$1::get (56 bytes)
+Event: 1.037 Thread 0x0000000018bba800 nmethod 1434 0x0000000003913ed0 code [0x00000000039140c0, 0x0000000003914c78]
+Event: 1.037 Thread 0x0000000018bba800 1440       3       sun.reflect.Reflection::quickCheckMemberAccess (10 bytes)
+Event: 1.037 Thread 0x0000000018bba800 nmethod 1440 0x00000000039151d0 code [0x0000000003915340, 0x0000000003915568]
+Event: 1.037 Thread 0x0000000018bba800 1441       3       sun.reflect.NativeConstructorAccessorImpl::newInstance (89 bytes)
+Event: 1.038 Thread 0x0000000018bba800 nmethod 1441 0x0000000003915610 code [0x0000000003915880, 0x0000000003916bb8]
+Event: 1.038 Thread 0x0000000018bba800 1442       1       com.google.inject.spi.TypeListenerBinding::getListener (5 bytes)
+Event: 1.038 Thread 0x0000000018bba800 nmethod 1442 0x00000000039173d0 code [0x0000000003917520, 0x0000000003917630]
+Event: 1.038 Thread 0x0000000018bba800 1443       1       com.google.inject.spi.TypeListenerBinding::getTypeMatcher (5 bytes)
+Event: 1.038 Thread 0x0000000018bba800 nmethod 1443 0x0000000003917690 code [0x00000000039177e0, 0x00000000039178f0]
+Event: 1.039 Thread 0x0000000018bba800 1444       3       com.google.inject.internal.Scoping$1::acceptVisitor (7 bytes)
+Event: 1.039 Thread 0x0000000018bba800 nmethod 1444 0x0000000003917950 code [0x0000000003917ac0, 0x0000000003917e10]
+Event: 1.039 Thread 0x0000000018bba800 1445       3       com.google.inject.Scopes$2::visitNoScoping (5 bytes)
+Event: 1.039 Thread 0x0000000018bba800 nmethod 1445 0x0000000003917f90 code [0x0000000003918100, 0x0000000003918390]
+Event: 1.039 Thread 0x0000000018bba800 1447       3       org.eclipse.sisu.inject.QualifyingStrategy::qualify (53 bytes)
+Event: 1.039 Thread 0x0000000018bba800 nmethod 1447 0x0000000003918450 code [0x0000000003918620, 0x0000000003919068]
+Event: 1.039 Thread 0x0000000018bba800 1446       3       com.google.inject.Scopes$2::visitNoScoping (5 bytes)
+Event: 1.039 Thread 0x0000000018bba800 nmethod 1446 0x0000000003919290 code [0x0000000003919400, 0x00000000039195d0]
+Event: 1.039 Thread 0x0000000018bba800 1448       3       java.lang.Long::equals (30 bytes)
+Event: 1.040 Thread 0x0000000018bba800 nmethod 1448 0x0000000003919690 code [0x0000000003919800, 0x0000000003919cd0]
+Event: 1.040 Thread 0x0000000018bba800 1451   !   3       org.eclipse.sisu.inject.BeanCache::create (172 bytes)
+Event: 1.040 Thread 0x0000000018bba800 nmethod 1451 0x0000000003919dd0 code [0x0000000003919fe0, 0x000000000391afb8]
+Event: 1.040 Thread 0x0000000018bba800 1452       3       org.eclipse.sisu.inject.QualifyingStrategy::selectFor (53 bytes)
+Event: 1.040 Thread 0x0000000018bba800 nmethod 1452 0x000000000391b4d0 code [0x000000000391b6a0, 0x000000000391bd68]
+Event: 1.040 Thread 0x0000000018bba800 1449       3       org.eclipse.sisu.wire.BeanProviders$1::get (5 bytes)
+Event: 1.041 Thread 0x0000000018bba800 nmethod 1449 0x000000000391bf90 code [0x000000000391c120, 0x000000000391c538]
+Event: 1.041 Thread 0x0000000018bba800 1450       3       org.eclipse.sisu.wire.BeanProviders$1::get (25 bytes)
+Event: 1.041 Thread 0x0000000018bba800 nmethod 1450 0x000000000391c710 code [0x000000000391c8a0, 0x000000000391cc58]
+Event: 1.041 Thread 0x0000000018bba800 1453   !   3       org.eclipse.sisu.inject.RankedBindings::newBeanCache (36 bytes)
+Event: 1.041 Thread 0x0000000018bba800 nmethod 1453 0x000000000391cdd0 code [0x000000000391cf60, 0x000000000391d4a8]
+Event: 1.041 Thread 0x0000000018bba800 1454       3       org.eclipse.sisu.inject.BeanCache::<init> (5 bytes)
+Event: 1.041 Thread 0x0000000018bba800 nmethod 1454 0x000000000391d6d0 code [0x000000000391d840, 0x000000000391da50]
+Event: 1.041 Thread 0x0000000018bba800 1455       3       org.eclipse.sisu.inject.MildElements::add (66 bytes)
+Event: 1.042 Thread 0x0000000018bba800 nmethod 1455 0x000000000391db10 code [0x000000000391dd20, 0x000000000391e998]
+Event: 1.042 Thread 0x0000000018bba800 1456       3       org.eclipse.sisu.inject.MildElements::compact (21 bytes)
+Event: 1.042 Thread 0x0000000018bba800 nmethod 1456 0x000000000391ef10 code [0x000000000391f0a0, 0x000000000391f658]
+Event: 1.042 Thread 0x0000000018bba800 1457       3       org.eclipse.sisu.inject.MildElements$Weak::<init> (12 bytes)
+Event: 1.042 Thread 0x0000000018bba800 nmethod 1457 0x000000000391f850 code [0x000000000391f9c0, 0x000000000391fcd0]
+Event: 1.042 Thread 0x0000000018bba800 1458       3       com.google.common.collect.ImmutableSet::builder (8 bytes)
+Event: 1.042 Thread 0x0000000018bba800 nmethod 1458 0x000000000391fe10 code [0x000000000391ffa0, 0x0000000003920408]
+Event: 1.042 Thread 0x0000000018bba800 1459       3       com.google.common.collect.ImmutableSet$Builder::<init> (6 bytes)
+Event: 1.042 Thread 0x0000000018bba800 nmethod 1459 0x0000000003920650 code [0x00000000039207e0, 0x0000000003920ba8]
+Event: 1.043 Thread 0x0000000018bba800 1461       3       java.lang.Character::isSurrogate (18 bytes)
+Event: 1.043 Thread 0x0000000018bba800 nmethod 1461 0x0000000003920d90 code [0x0000000003920ee0, 0x00000000039210b0]
+Event: 1.043 Thread 0x0000000018bba800 1460       3       java.util.regex.Pattern::isSupplementary (20 bytes)
+Event: 1.043 Thread 0x0000000018bba800 nmethod 1460 0x0000000003921110 code [0x0000000003921280, 0x0000000003921550]
+Event: 1.043 Thread 0x0000000018bba800 1462       3       sun.misc.ProxyGenerator$ExceptionTableEntry::<init> (26 bytes)
+Event: 1.043 Thread 0x0000000018bba800 nmethod 1462 0x0000000003921610 code [0x0000000003921760, 0x0000000003921910]
+Event: 1.044 Thread 0x0000000018bba800 1463       3       sun.misc.ProxyGenerator$ConstantPool::getString (21 bytes)
+Event: 1.044 Thread 0x0000000018bba800 nmethod 1463 0x00000000039219d0 code [0x0000000003921b80, 0x0000000003922088]
+Event: 1.044 Thread 0x0000000018bba800 1464       3       sun.misc.ProxyGenerator::code_ldc (64 bytes)
+Event: 1.044 Thread 0x0000000018bba800 nmethod 1464 0x0000000003922350 code [0x0000000003922560, 0x0000000003923168]
+Event: 1.048 Thread 0x0000000018bba800 1465   !   3       com.google.inject.internal.ProviderInternalFactory::circularGet (134 bytes)
+Event: 1.049 Thread 0x0000000018bba800 nmethod 1465 0x00000000039235d0 code [0x00000000039237e0, 0x00000000039249f8]
+Event: 1.049 Thread 0x0000000018bba800 1466       3       com.google.inject.internal.InternalFactoryToInitializableAdapter::get (25 bytes)
+Event: 1.049 Thread 0x0000000018bba800 nmethod 1466 0x0000000003925050 code [0x00000000039251e0, 0x00000000039255d8]
+Event: 1.049 Thread 0x0000000018bba800 1467       3       com.google.inject.internal.ProviderInternalFactory$1::<init> (32 bytes)
+Event: 1.050 Thread 0x0000000018bba800 nmethod 1467 0x0000000003925710 code [0x0000000003925860, 0x0000000003925a70]
+Event: 1.050 Thread 0x0000000018bba800 1473       1       sun.reflect.ByteVectorImpl::getLength (7 bytes)
+Event: 1.050 Thread 0x0000000018bba800 nmethod 1473 0x0000000003925b50 code [0x0000000003925ca0, 0x0000000003925db0]
+Event: 1.050 Thread 0x0000000018bba800 1468       3       com.google.inject.internal.ProviderInternalFactory$1::call (24 bytes)
+Event: 1.050 Thread 0x0000000018bba800 nmethod 1468 0x0000000003925e10 code [0x0000000003925f80, 0x00000000039261a8]
+Event: 1.050 Thread 0x0000000018bba800 1469       3       com.google.inject.internal.ProviderInternalFactory::provision (27 bytes)
+Event: 1.050 Thread 0x0000000018bba800 nmethod 1469 0x0000000003926250 code [0x00000000039263e0, 0x00000000039267a8]
+Event: 1.050 Thread 0x0000000018bba800 1470   !   3       com.google.inject.internal.InternalFactoryToInitializableAdapter::provision (29 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1470 0x0000000003926950 code [0x0000000003926bc0, 0x0000000003927d28]
+Event: 1.051 Thread 0x0000000018bba800 1476       3       org.eclipse.sisu.inject.RankedSequence::safeBinarySearch (77 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1476 0x0000000003928610 code [0x0000000003928780, 0x0000000003928ad0]
+Event: 1.051 Thread 0x0000000018bba800 1471       3       org.eclipse.sisu.inject.LocatedBeans::<init> (36 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1471 0x0000000003928c90 code [0x0000000003928e00, 0x0000000003929138]
+Event: 1.051 Thread 0x0000000018bba800 1474       3       org.eclipse.sisu.inject.RankedSequence::iterator (9 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1474 0x0000000003929250 code [0x00000000039293c0, 0x0000000003929650]
+Event: 1.051 Thread 0x0000000018bba800 1475       3       org.eclipse.sisu.inject.RankedSequence$Itr::<init> (22 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1475 0x0000000003929750 code [0x00000000039298a0, 0x0000000003929a90]
+Event: 1.051 Thread 0x0000000018bba800 1477       3       org.eclipse.sisu.inject.LocatedBeans::iterator (9 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1477 0x0000000003929b50 code [0x0000000003929cc0, 0x0000000003929ea8]
+Event: 1.051 Thread 0x0000000018bba800 1478       3       com.google.inject.internal.BindingImpl::getProvider (44 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1478 0x0000000003929f50 code [0x000000000392a0e0, 0x000000000392a478]
+Event: 1.051 Thread 0x0000000018bba800 1479       1       java.util.Collections::emptySet (4 bytes)
+Event: 1.051 Thread 0x0000000018bba800 nmethod 1479 0x000000000392a5d0 code [0x000000000392a720, 0x000000000392a810]
+Event: 1.051 Thread 0x0000000018bba800 1472       3       sun.reflect.ClassFileAssembler::setStack (25 bytes)
+Event: 1.052 Thread 0x0000000018bba800 nmethod 1472 0x000000000392a850 code [0x000000000392a9a0, 0x000000000392ab30]
+Event: 1.052 Thread 0x0000000018bba800 1480       3       org.eclipse.sisu.inject.LazyBeanEntry::<init> (81 bytes)
+Event: 1.053 Thread 0x0000000018bba800 nmethod 1480 0x000000000392ab90 code [0x000000000392ad60, 0x000000000392b588]
+Event: 1.053 Thread 0x0000000018bba800 1481       3       org.eclipse.sisu.wire.BeanProviders::firstOf (35 bytes)
+Event: 1.053 Thread 0x0000000018bba800 nmethod 1481 0x000000000392b890 code [0x000000000392ba40, 0x000000000392bfd8]
+Event: 1.053 Thread 0x0000000018bba800 1482       3       org.eclipse.sisu.wire.BeanProviders$7::get (16 bytes)
+Event: 1.053 Thread 0x0000000018bba800 nmethod 1482 0x000000000392c150 code [0x000000000392c320, 0x000000000392cae8]
+Event: 1.053 Thread 0x0000000018bba800 1483       3       org.eclipse.sisu.inject.QualifyingStrategy$1::qualifies (22 bytes)
+Event: 1.053 Thread 0x0000000018bba800 nmethod 1483 0x000000000392cd10 code [0x000000000392ce80, 0x000000000392d128]
+Event: 1.053 Thread 0x0000000018bba800 1484       3       sun.reflect.AccessorGenerator::sub (5 bytes)
+Event: 1.053 Thread 0x0000000018bba800 nmethod 1484 0x000000000392d210 code [0x000000000392d360, 0x000000000392d4b0]
+Event: 1.053 Thread 0x0000000018bba800 1485       3       org.eclipse.sisu.inject.LocatedBeans$Itr::<init> (48 bytes)
+Event: 1.054 Thread 0x0000000018bba800 nmethod 1485 0x000000000392d510 code [0x000000000392d6c0, 0x000000000392de48]
+Event: 1.054 Thread 0x0000000018bba800 1491       3       com.google.inject.Scopes::isSingleton (106 bytes)
+Event: 1.054 Thread 0x0000000018bba800 nmethod 1491 0x000000000392e250 code [0x000000000392e480, 0x000000000392f528]
+Event: 1.054 Thread 0x0000000018bba800 1486       3       org.eclipse.sisu.inject.RankedBindings::iterator (9 bytes)
+Event: 1.054 Thread 0x0000000018bba800 nmethod 1486 0x000000000392f9d0 code [0x000000000392fb60, 0x0000000003930010]
+Event: 1.054 Thread 0x0000000018bba800 1487       3       org.eclipse.sisu.inject.RankedBindings$Itr::<init> (21 bytes)
+Event: 1.055 Thread 0x0000000018bba800 nmethod 1487 0x0000000003930290 code [0x0000000003930400, 0x0000000003930810]
+Event: 1.055 Thread 0x0000000018bba800 1488   !   3       org.eclipse.sisu.inject.BeanCache::flush (53 bytes)
+Event: 1.055 Thread 0x0000000018bba800 nmethod 1488 0x00000000039309d0 code [0x0000000003930b60, 0x00000000039311c8]
+Event: 1.055 Thread 0x0000000018bba800 1494   !   3       com.google.inject.internal.SingleParameterInjector::getAll (81 bytes)
+Event: 1.055 Thread 0x0000000018bba800 nmethod 1494 0x0000000003931390 code [0x00000000039315a0, 0x00000000039322d8]
+Event: 1.055 Thread 0x0000000018bba800 1489       3       org.eclipse.sisu.inject.LocatedBeans$Itr::next (5 bytes)
+Event: 1.056 Thread 0x0000000018bba800 nmethod 1489 0x0000000003932a10 code [0x0000000003932ba0, 0x0000000003932f98]
+Event: 1.056 Thread 0x0000000018bba800 1490       3       org.eclipse.sisu.inject.LocatedBeans$Itr::next (32 bytes)
+Event: 1.056 Thread 0x0000000018bba800 nmethod 1490 0x0000000003933110 code [0x0000000003933280, 0x00000000039335b8]
+Event: 1.056 Thread 0x0000000018bba800 1492       3       org.eclipse.sisu.inject.LazyBeanEntry::getValue (10 bytes)
+Event: 1.056 Thread 0x0000000018bba800 nmethod 1492 0x00000000039336d0 code [0x0000000003933840, 0x0000000003933a68]
+Event: 1.056 Thread 0x0000000018bba800 1495       3       com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection::<init> (44 bytes)
+Event: 1.056 Thread 0x0000000018bba800 nmethod 1495 0x0000000003933b10 code [0x0000000003933c80, 0x0000000003933ff0]
+Event: 1.056 Thread 0x0000000018bba800 1493       1       java.lang.reflect.AccessibleObject::isAccessible (5 bytes)
+Event: 1.056 Thread 0x0000000018bba800 nmethod 1493 0x0000000003934150 code [0x00000000039342a0, 0x00000000039343b0]
+Event: 1.056 Thread 0x0000000018bba800 1496       3       com.google.inject.internal.ConstructorBindingImpl$Factory::get (65 bytes)
+Event: 1.057 Thread 0x0000000018bba800 nmethod 1496 0x0000000003934410 code [0x0000000003934620, 0x00000000039352b8]
+Event: 1.057 Thread 0x0000000018bba800 1498       3       java.lang.reflect.Field::getFieldAccessor (35 bytes)
+Event: 1.057 Thread 0x0000000018bba800 nmethod 1498 0x0000000003935890 code [0x0000000003935a00, 0x0000000003935c48]
+Event: 1.057 Thread 0x0000000018bba800 1497       1       sun.reflect.generics.repository.AbstractRepository::getTree (5 bytes)
+Event: 1.057 Thread 0x0000000018bba800 nmethod 1497 0x0000000003935cd0 code [0x0000000003935e20, 0x0000000003935f30]
+Event: 1.057 Thread 0x0000000018bba800 1499       1       com.google.inject.spi.InjectionPoint::getDeclaringType (5 bytes)
+Event: 1.058 Thread 0x0000000018bba800 nmethod 1499 0x0000000003935f90 code [0x00000000039360e0, 0x00000000039361f0]
+Event: 1.058 Thread 0x0000000018bba800 1500       3       org.slf4j.impl.SimpleLogger::getStringProperty (15 bytes)
+Event: 1.058 Thread 0x0000000018bba800 nmethod 1500 0x0000000003936250 code [0x0000000003936420, 0x0000000003936a18]
+Event: 1.059 Thread 0x0000000018bba800 1501       3       com.google.inject.internal.Scoping$3::acceptVisitor (10 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1501 0x0000000003936d50 code [0x0000000003936ec0, 0x0000000003937230]
+Event: 1.059 Thread 0x0000000018bba800 1502       3       com.google.inject.Scopes$2::visitScope (6 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1502 0x00000000039373d0 code [0x0000000003937540, 0x0000000003937890]
+Event: 1.059 Thread 0x0000000018bba800 1503       3       com.google.inject.Scopes$2::visitScope (16 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1503 0x0000000003937990 code [0x0000000003937b00, 0x0000000003937d70]
+Event: 1.059 Thread 0x0000000018bba800 1504   !   3       com.sun.proxy.$Proxy0::value (29 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1504 0x0000000003937e10 code [0x0000000003937fa0, 0x00000000039383d8]
+Event: 1.059 Thread 0x0000000018bba800 1505       1       com.google.inject.Key$AnnotationTypeStrategy::hasAttributes (2 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1505 0x0000000003938590 code [0x00000000039386e0, 0x00000000039387f0]
+Event: 1.059 Thread 0x0000000018bba800 1506       1       org.eclipse.sisu.inject.MildKeys$Weak::hashCode (5 bytes)
+Event: 1.059 Thread 0x0000000018bba800 nmethod 1506 0x0000000003938850 code [0x00000000039389a0, 0x0000000003938ab0]
+Event: 1.059 Thread 0x0000000018bba800 1507       3       org.eclipse.sisu.plexus.RealmFilteredBeans$FilteredItr::hasNext (81 bytes)
+Event: 1.060 Thread 0x0000000018bba800 nmethod 1507 0x0000000003938b10 code [0x0000000003938d40, 0x0000000003939b38]
+Event: 1.060 Thread 0x0000000018bba800 1510   !   3       com.google.inject.internal.InjectorImpl::getBinding (45 bytes)
+Event: 1.061 Thread 0x0000000018bba800 nmethod 1510 0x0000000003939f90 code [0x000000000393a1e0, 0x000000000393afe8]
+Event: 1.061 Thread 0x0000000018bba800 1508   !   3       com.google.inject.internal.FactoryProxy::get (50 bytes)
+Event: 1.061 Thread 0x0000000018bba800 nmethod 1508 0x000000000393b750 code [0x000000000393b920, 0x000000000393c398]
+Event: 1.061 Thread 0x0000000018bba800 1509       3       org.eclipse.sisu.space.WildcardKey$QualifiedImpl::get (5 bytes)
+Event: 1.061 Thread 0x0000000018bba800 nmethod 1509 0x000000000393c850 code [0x000000000393c9a0, 0x000000000393cb90]
+Event: 1.061 Thread 0x0000000018bba800 1511       3       org.eclipse.sisu.inject.Guice4$1::<init> (17 bytes)
+Event: 1.061 Thread 0x0000000018bba800 nmethod 1511 0x000000000393cc10 code [0x000000000393cd80, 0x000000000393cf70]
+Event: 1.061 Thread 0x0000000018bba800 1512   !   3       org.eclipse.sisu.inject.Guice4$1::get (50 bytes)
+Event: 1.061 Thread 0x0000000018bba800 nmethod 1512 0x000000000393d010 code [0x000000000393d180, 0x000000000393d5e8]
+Event: 1.061 Thread 0x0000000018bba800 1513       3       org.eclipse.sisu.inject.Guice4::lazy (43 bytes)
+Event: 1.062 Thread 0x0000000018bba800 nmethod 1513 0x000000000393d710 code [0x000000000393d880, 0x000000000393dbc8]
+Event: 1.062 Thread 0x0000000018bba800 1514       3       java.lang.reflect.Field::setFieldAccessor (34 bytes)
+Event: 1.062 Thread 0x0000000018ba7000 1515       4       java.lang.ReflectiveOperationException::<init> (7 bytes)
+Event: 1.062 Thread 0x0000000018ba3000 1517       4       java.lang.Throwable::<init> (39 bytes)
+Event: 1.062 Thread 0x0000000018bba800 nmethod 1514 0x000000000393dd10 code [0x000000000393de80, 0x000000000393e208]
+Event: 1.062 Thread 0x0000000018bba800 1516       2       java.lang.Exception::<init> (7 bytes)
+Event: 1.062 Thread 0x0000000018bba800 nmethod 1516 0x000000000393e350 code [0x000000000393e4c0, 0x000000000393e628]
+Event: 1.063 Thread 0x0000000018bba800 1519       3       org.eclipse.sisu.bean.BeanPropertyField::getType (11 bytes)
+Event: 1.063 Thread 0x0000000018ba7000 
+
+Event: 1.063 Thread 0x0000000018ba7000 1518       4       java.net.URLClassLoader$1::run (5 bytes)
+Event: 1.063 Thread 0x0000000018ba3000 
+
+Event: 1.064 Thread 0x0000000018bba800 nmethod 1519 0x000000000393fbd0 code [0x000000000393fe20, 0x0000000003940d58]
+Event: 1.064 Thread 0x0000000018bba800 1520       3       com.google.inject.internal.Annotations::isRetainedAtRuntime (33 bytes)
+Event: 1.064 Thread 0x0000000018bba800 nmethod 1520 0x000000000393ec10 code [0x000000000393ee00, 0x000000000393f798]
+Event: 1.064 Thread 0x0000000018bba800 1521       3       org.eclipse.sisu.inject.MildKeys$Weak::<init> (15 bytes)
+Event: 1.065 Thread 0x0000000018bba800 nmethod 1521 0x0000000003941b10 code [0x0000000003941ca0, 0x0000000003942088]
+Event: 1.065 Thread 0x0000000018bba800 1522       3       org.eclipse.sisu.inject.Sources::getAnnotation (38 bytes)
+Event: 1.065 Thread 0x0000000018bba800 nmethod 1522 0x0000000003942210 code [0x00000000039423e0, 0x0000000003942ca8]
+Event: 1.065 Thread 0x0000000018bba800 1523   !   3       com.google.inject.internal.FailableCache$1::load (48 bytes)
+Event: 1.065 Thread 0x0000000018bba800 nmethod 1523 0x0000000003942ed0 code [0x0000000003943080, 0x0000000003943748]
+Event: 1.066 Thread 0x0000000018bba800 1525       3       com.google.common.collect.LinkedHashMultimap$ValueSet::contains (42 bytes)
+Event: 1.066 Thread 0x0000000018bba800 nmethod 1525 0x0000000003943990 code [0x0000000003943b60, 0x00000000039444d8]
+Event: 1.066 Thread 0x0000000018bba800 1524       3       com.google.common.collect.AbstractMapBasedMultimap$WrappedCollection::contains (15 bytes)
+Event: 1.066 Thread 0x0000000018bba800 nmethod 1524 0x000000000393e6d0 code [0x000000000393e840, 0x000000000393eb18]
+Event: 1.066 Thread 0x0000000018bba800 1526       3       com.google.common.collect.LinkedHashMultimap$ValueEntry::setSuccessorInValueSet (6 bytes)
+Event: 1.067 Thread 0x0000000018bba800 nmethod 1526 0x0000000003944890 code [0x00000000039449e0, 0x0000000003944b50]
+Event: 1.067 Thread 0x0000000018bba800 1527       3       java.util.Hashtable$Enumerator::hasMoreElements (53 bytes)
+Event: 1.067 Thread 0x0000000018bba800 nmethod 1527 0x0000000003944bd0 code [0x0000000003944d40, 0x0000000003945010]
+Event: 1.067 Thread 0x0000000018bba800 1528       3       java.util.Hashtable$Enumerator::nextElement (111 bytes)
+Event: 1.067 Thread 0x0000000018bba800 nmethod 1528 0x0000000003945150 code [0x00000000039452e0, 0x0000000003945748]
+Event: 1.071 Thread 0x0000000018bba800 1529       3       java.util.AbstractList$Itr::checkForComodification (23 bytes)
+Event: 1.071 Thread 0x0000000018bba800 nmethod 1529 0x0000000003945950 code [0x0000000003945ac0, 0x0000000003945d28]
+Event: 1.071 Thread 0x0000000018bba800 1532       1       java.util.concurrent.atomic.AtomicReference::compareAndSet (13 bytes)
+Event: 1.072 Thread 0x0000000018bba800 nmethod 1532 0x0000000003945e50 code [0x0000000003945fa0, 0x00000000039460f0]
+Event: 1.072 Thread 0x0000000018bba800 1531       3       org.eclipse.sisu.inject.MildElements$Itr::hasNext (73 bytes)
+Event: 1.072 Thread 0x0000000018bba800 nmethod 1531 0x0000000003946150 code [0x0000000003946300, 0x0000000003946908]
+Event: 1.072 Thread 0x0000000018bba800 1533       3       org.eclipse.sisu.inject.MildElements$Itr::next (35 bytes)
+Event: 1.072 Thread 0x0000000018bba800 nmethod 1533 0x0000000003946ad0 code [0x0000000003946c40, 0x0000000003946f78]
+Event: 1.072 Thread 0x0000000018bba800 1534   !   3       org.eclipse.sisu.inject.BeanCache::remove (88 bytes)
+Event: 1.072 Thread 0x0000000018bba800 nmethod 1534 0x0000000003947090 code [0x0000000003947260, 0x0000000003947d68]
+Event: 1.072 Thread 0x0000000018bba800 1530   !   3       java.util.AbstractList$Itr::next (45 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1530 0x0000000003948010 code [0x00000000039481e0, 0x00000000039488b8]
+Event: 1.073 Thread 0x0000000018bba800 1535       3       java.util.Arrays::asList (9 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1535 0x0000000003948c10 code [0x0000000003948da0, 0x0000000003949208]
+Event: 1.073 Thread 0x0000000018bba800 1536       3       java.util.Arrays$ArrayList::<init> (16 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1536 0x0000000003949490 code [0x0000000003949620, 0x0000000003949a08]
+Event: 1.073 Thread 0x0000000018bba800 1537       3       java.util.AbstractList$Itr::<init> (6 bytes)
+Event: 1.073 Thread 0x0000000018ba3000 1540       4       java.nio.CharBuffer::hasArray (20 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1537 0x0000000003949bd0 code [0x0000000003949d40, 0x0000000003949f90]
+Event: 1.073 Thread 0x0000000018bba800 1538       3       java.util.AbstractList$Itr::<init> (31 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1538 0x000000000394a0d0 code [0x000000000394a240, 0x000000000394a430]
+Event: 1.073 Thread 0x0000000018bba800 1539       3       java.util.Arrays$ArrayList::get (7 bytes)
+Event: 1.073 Thread 0x0000000018bba800 nmethod 1539 0x000000000394a510 code [0x000000000394a660, 0x000000000394a7d0]
+Event: 1.074 Thread 0x0000000018ba3000 nmethod 1540 0x000000000394d550 code [0x000000000394d680, 0x000000000394d718]
+Event: 1.074 Thread 0x0000000018ba3000 1541       4       java.nio.CharBuffer::array (35 bytes)
+Event: 1.074 Thread 0x0000000018ba3000 nmethod 1541 0x000000000394d7d0 code [0x000000000394d900, 0x000000000394d998]
+
+GC Heap History (4 events):
+Event: 0.549 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 33280K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 0K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a00000,0x0000000085f80000)
+ Metaspace       used 8537K, capacity 8776K, committed 9088K, reserved 1056768K
+  class space    used 979K, capacity 1052K, committed 1152K, reserved 1048576K
+Event: 0.554 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 38400K, used 5107K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7980000,0x00000000d7e7cc18,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+ ParOldGen       total 87552K, used 242K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a3c890,0x0000000085f80000)
+ Metaspace       used 8537K, capacity 8776K, committed 9088K, reserved 1056768K
+  class space    used 979K, capacity 1052K, committed 1152K, reserved 1048576K
+}
+Event: 0.923 GC heap before
+{Heap before GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 38387K [0x00000000d5900000, 0x00000000d8380000, 0x0000000100000000)
+  eden space 33280K, 100% used [0x00000000d5900000,0x00000000d7980000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7980000,0x00000000d7e7cc18,0x00000000d7e80000)
+  to   space 5120K, 0% used [0x00000000d7e80000,0x00000000d7e80000,0x00000000d8380000)
+ ParOldGen       total 87552K, used 242K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 0% used [0x0000000080a00000,0x0000000080a3c890,0x0000000085f80000)
+ Metaspace       used 12638K, capacity 12904K, committed 13184K, reserved 1060864K
+  class space    used 1512K, capacity 1611K, committed 1664K, reserved 1048576K
+Event: 0.931 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 38400K, used 5107K [0x00000000d5900000, 0x00000000da400000, 0x0000000100000000)
+  eden space 33280K, 0% used [0x00000000d5900000,0x00000000d5900000,0x00000000d7980000)
+  from space 5120K, 99% used [0x00000000d7e80000,0x00000000d837cf78,0x00000000d8380000)
+  to   space 5120K, 0% used [0x00000000d7980000,0x00000000d7980000,0x00000000d7e80000)
+ ParOldGen       total 87552K, used 2970K [0x0000000080a00000, 0x0000000085f80000, 0x00000000d5900000)
+  object space 87552K, 3% used [0x0000000080a00000,0x0000000080ce6b68,0x0000000085f80000)
+ Metaspace       used 12638K, capacity 12904K, committed 13184K, reserved 1060864K
+  class space    used 1512K, capacity 1611K, committed 1664K, reserved 1048576K
+}
+
+Deoptimization events (5 events):
+Event: 0.424 Thread 0x00000000032a8000 Uncommon trap: reason=range_check action=make_not_entrant pc=0x000000000369ac60 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 0.431 Thread 0x00000000032a8000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000003606c24 method=org.codehaus.plexus.util.xml.pull.MXParser.more()C @ 8
+Event: 0.506 Thread 0x00000000032a8000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036ee1b4 method=org.codehaus.plexus.util.xml.pull.MXParser.isWhitespace()Z @ 20
+Event: 0.509 Thread 0x00000000032a8000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000036f22e0 method=org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()I @ 241
+Event: 0.918 Thread 0x00000000032a8000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000037949ec method=java.util.concurrent.ConcurrentHashMap.putVal(Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; @ 206
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (37 events):
+Event: 0.026 Thread 0x00000000032a8000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d5907cb8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.
+Event: 0.026 Thread 0x00000000032a8000 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d5907fa0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 4014]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cc5c08) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cc6000) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cca320) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5cca718) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5ccbfc0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.172 Thread 0x00000000032a8000 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d5ccc3b8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1501]
+Event: 0.413 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d69fa990) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.414 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a045d8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.420 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a5cdb0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.421 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a694a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.422 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a6a4c0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.422 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a731e8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.422 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a73fc0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.422 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a75660) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.422 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a77378) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.423 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a78168) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.423 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a7f9a0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.423 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a810e0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a828a8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a83648) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a852d0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a86828) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a88938) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a89fd0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a8bcb8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a8d1f0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.424 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d6a8e060) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.425 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 81> (0x00000000d6a8f560) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 0.514 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d776ef10) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.514 Thread 0x00000000032a8000 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000000d77708b8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 615]
+Event: 0.944 Thread 0x00000000032a8000 Exception <a 'java/lang/NoClassDefFoundError': com/google/inject/servlet/ServletModuleTargetVisitor> (0x00000000d59e6af8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 0.944 Thread 0x00000000032a8000 Exception <a 'java/lang/NoClassDefFoundError'> (0x00000000d59e6af8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1505]
+Event: 0.944 Thread 0x00000000032a8000 Exception <a 'java/lang/NoClassDefFoundError': javax/annotation/Priority> (0x00000000d59eb498) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 199]
+Event: 1.070 Thread 0x00000000032a8000 Exception <a 'java/lang/OutOfMemoryError': (class: org/codehaus/plexus/util/xml/pull/EntityReplacementMap, method: <clinit> signature: ()V) > (0x00000000d6058b48) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\classfile\verifier.cpp
+Event: 1.072 Thread 0x00000000032a8000 Exception <a 'java/lang/reflect/InvocationTargetException'> (0x00000000d6061778) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\runtime\reflection.cpp, line 1092]
+
+Events (250 events):
+Event: 1.027 loading class sun/security/provider/NativePRNG$Blocking done
+Event: 1.027 loading class sun/security/provider/NativePRNG$NonBlocking
+Event: 1.027 loading class sun/security/provider/NativePRNG$NonBlocking done
+Event: 1.028 loading class java/security/Provider$Service
+Event: 1.028 loading class java/security/Provider$Service done
+Event: 1.028 loading class java/security/Provider$UString
+Event: 1.028 loading class java/security/Provider$UString done
+Event: 1.029 loading class sun/security/provider/SHA2$SHA256
+Event: 1.029 loading class sun/security/provider/SHA2
+Event: 1.029 loading class sun/security/provider/DigestBase
+Event: 1.029 loading class sun/security/provider/DigestBase done
+Event: 1.029 loading class sun/security/provider/SHA2 done
+Event: 1.029 loading class sun/security/provider/SHA2$SHA256 done
+Event: 1.029 loading class sun/security/jca/GetInstance$Instance
+Event: 1.029 loading class sun/security/jca/GetInstance$Instance done
+Event: 1.029 loading class java/security/MessageDigest$Delegate
+Event: 1.029 loading class java/security/MessageDigest$Delegate done
+Event: 1.029 loading class java/security/SecureRandom
+Event: 1.029 loading class java/security/SecureRandom done
+Event: 1.029 loading class java/security/SecureRandomSpi
+Event: 1.029 loading class java/security/SecureRandomSpi done
+Event: 1.029 loading class sun/security/provider/SecureRandom
+Event: 1.030 loading class sun/security/provider/SecureRandom done
+Event: 1.030 loading class sun/security/provider/SHA
+Event: 1.030 loading class sun/security/provider/SHA done
+Event: 1.030 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager
+Event: 1.030 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager done
+Event: 1.030 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager
+Event: 1.030 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager done
+Event: 1.031 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager
+Event: 1.031 loading class org/apache/maven/plugin/internal/DefaultMavenPluginManager done
+Event: 1.031 loading class org/apache/maven/plugin/PluginArtifactsCache
+Event: 1.031 loading class org/apache/maven/plugin/PluginArtifactsCache done
+Event: 1.031 loading class org/apache/maven/plugin/version/PluginVersionResolver
+Event: 1.031 loading class org/apache/maven/plugin/version/PluginVersionResolver done
+Event: 1.031 loading class org/apache/maven/plugin/ExtensionRealmCache
+Event: 1.031 loading class org/apache/maven/plugin/ExtensionRealmCache done
+Event: 1.031 loading class org/apache/maven/rtinfo/RuntimeInformation
+Event: 1.031 loading class org/apache/maven/rtinfo/RuntimeInformation done
+Event: 1.031 loading class org/apache/maven/plugin/internal/PluginDependenciesResolver
+Event: 1.031 loading class org/apache/maven/plugin/internal/PluginDependenciesResolver done
+Event: 1.031 loading class org/apache/maven/plugin/PluginRealmCache
+Event: 1.031 loading class org/apache/maven/plugin/PluginRealmCache done
+Event: 1.031 loading class org/apache/maven/plugin/PluginDescriptorCache
+Event: 1.031 loading class org/apache/maven/plugin/PluginDescriptorCache done
+Event: 1.031 loading class org/apache/maven/classrealm/ClassRealmManager
+Event: 1.031 loading class org/apache/maven/classrealm/ClassRealmManager done
+Event: 1.031 loading class org/codehaus/plexus/PlexusContainer
+Event: 1.031 loading class org/codehaus/plexus/PlexusContainer done
+Event: 1.031 loading class org/codehaus/plexus/logging/LoggerManager
+Event: 1.031 loading class org/codehaus/plexus/logging/LoggerManager done
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache done
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache done
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache
+Event: 1.032 loading class org/apache/maven/plugin/DefaultPluginDescriptorCache done
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache done
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache done
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache
+Event: 1.033 loading class org/apache/maven/plugin/DefaultPluginRealmCache done
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver done
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver done
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver
+Event: 1.033 loading class org/apache/maven/plugin/internal/DefaultPluginDependenciesResolver done
+Event: 1.036 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation
+Event: 1.036 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation done
+Event: 1.036 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation
+Event: 1.036 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation done
+Event: 1.037 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation
+Event: 1.037 loading class org/apache/maven/rtinfo/internal/DefaultRuntimeInformation done
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache done
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache done
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache
+Event: 1.037 loading class org/apache/maven/plugin/DefaultExtensionRealmCache done
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver done
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver done
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver
+Event: 1.038 loading class org/apache/maven/plugin/version/internal/DefaultPluginVersionResolver done
+Event: 1.038 loading class org/apache/maven/plugin/MavenPluginManager
+Event: 1.038 loading class org/apache/maven/plugin/MavenPluginManager done
+Event: 1.038 loading class org/apache/maven/artifact/repository/metadata/io/MetadataReader
+Event: 1.038 loading class org/apache/maven/artifact/repository/metadata/io/MetadataReader done
+Event: 1.038 loading class org/eclipse/aether/RepositorySystem
+Event: 1.038 loading class org/eclipse/aether/RepositorySystem done
+Event: 1.040 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader
+Event: 1.040 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader done
+Event: 1.040 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader
+Event: 1.040 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader done
+Event: 1.041 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader
+Event: 1.041 loading class org/apache/maven/artifact/repository/metadata/io/DefaultMetadataReader done
+Event: 1.041 loading class com/google/inject/internal/DelegatingInvocationHandler
+Event: 1.041 loading class com/google/inject/internal/DelegatingInvocationHandler done
+Event: 1.041 Executing VM operation: Deoptimize
+Event: 1.042 Executing VM operation: Deoptimize done
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen done
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen$1
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen$1 done
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen$BridgeClassLoader
+Event: 1.042 loading class com/google/inject/internal/BytecodeGen$BridgeClassLoader done
+Event: 1.043 loading class java/util/regex/Pattern$Dollar
+Event: 1.043 loading class java/util/regex/Pattern$Dollar done
+Event: 1.043 loading class java/lang/reflect/Proxy$Key2
+Event: 1.043 loading class java/lang/reflect/Proxy$Key2 done
+Event: 1.045 loading class org/apache/maven/execution/SettingsAdapter
+Event: 1.045 loading class org/apache/maven/execution/SettingsAdapter done
+Event: 1.046 loading class org/apache/maven/plugin/descriptor/DuplicateMojoDescriptorException
+Event: 1.046 loading class org/apache/maven/plugin/descriptor/DuplicateMojoDescriptorException done
+Event: 1.046 loading class org/apache/maven/plugin/descriptor/InvalidPluginDescriptorException
+Event: 1.046 loading class org/apache/maven/plugin/descriptor/InvalidPluginDescriptorException done
+Event: 1.047 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache
+Event: 1.047 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache done
+Event: 1.047 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache
+Event: 1.047 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache done
+Event: 1.048 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache
+Event: 1.048 loading class org/apache/maven/plugin/DefaultPluginArtifactsCache done
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver done
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver done
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver
+Event: 1.051 loading class org/apache/maven/project/DefaultProjectDependenciesResolver done
+Event: 1.052 loading class org/apache/maven/project/RepositorySessionDecorator
+Event: 1.052 loading class org/apache/maven/project/RepositorySessionDecorator done
+Event: 1.052 loading class org/eclipse/aether/RepositorySystem
+Event: 1.052 loading class org/eclipse/aether/RepositorySystem done
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult done
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult done
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult
+Event: 1.054 loading class org/apache/maven/lifecycle/internal/DefaultExecutionEventCatapult done
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator done
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator done
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/DefaultLifecycleTaskSegmentCalculator done
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/LifecyclePluginResolver
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/LifecyclePluginResolver done
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/MojoDescriptorCreator
+Event: 1.055 loading class org/apache/maven/lifecycle/internal/MojoDescriptorCreator done
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager done
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager done
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager
+Event: 1.056 loading class org/apache/maven/plugin/DefaultBuildPluginManager done
+Event: 1.056 loading class org/apache/maven/execution/MojoExecutionListener
+Event: 1.056 loading class org/apache/maven/execution/MojoExecutionListener done
+Event: 1.056 loading class org/apache/maven/execution/scope/internal/MojoExecutionScope
+Event: 1.056 loading class org/apache/maven/execution/scope/internal/MojoExecutionScope done
+Event: 1.056 loading class org/apache/maven/plugin/LegacySupport
+Event: 1.056 loading class org/apache/maven/plugin/LegacySupport done
+Event: 1.056 loading class org/apache/maven/plugin/MavenPluginManager
+Event: 1.056 loading class org/apache/maven/plugin/MavenPluginManager done
+Event: 1.057 loading class org/apache/maven/plugin/CompoundMojoExecutionListener
+Event: 1.057 loading class org/apache/maven/plugin/CompoundMojoExecutionListener done
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver done
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver done
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver
+Event: 1.057 loading class org/apache/maven/plugin/prefix/internal/DefaultPluginPrefixResolver done
+Event: 1.058 loading class org/apache/maven/artifact/repository/metadata/io/MetadataReader
+Event: 1.058 loading class org/apache/maven/artifact/repository/metadata/io/MetadataReader done
+Event: 1.058 loading class org/eclipse/aether/RepositorySystem
+Event: 1.058 loading class org/eclipse/aether/RepositorySystem done
+Event: 1.058 loading class org/apache/maven/plugin/BuildPluginManager
+Event: 1.058 loading class org/apache/maven/plugin/BuildPluginManager done
+Event: 1.061 loading class org/eclipse/aether/internal/impl/SimpleLocalRepositoryManager
+Event: 1.061 loading class org/eclipse/aether/internal/impl/SimpleLocalRepositoryManager done
+Event: 1.061 loading class org/apache/maven/graph/DefaultGraphBuilder
+Event: 1.061 loading class org/apache/maven/graph/DefaultGraphBuilder done
+Event: 1.061 loading class org/apache/maven/graph/DefaultGraphBuilder
+Event: 1.061 loading class org/apache/maven/graph/DefaultGraphBuilder done
+Event: 1.062 loading class org/apache/maven/graph/DefaultGraphBuilder
+Event: 1.062 loading class org/apache/maven/graph/DefaultGraphBuilder done
+Event: 1.062 loading class org/apache/maven/project/ProjectBuilder
+Event: 1.062 loading class org/apache/maven/project/ProjectBuilder done
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor done
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor done
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor
+Event: 1.063 loading class org/apache/maven/cli/configuration/SettingsXmlConfigurationProcessor done
+Event: 1.063 loading class org/apache/maven/settings/crypto/SettingsDecrypter
+Event: 1.063 loading class org/apache/maven/settings/crypto/SettingsDecrypter done
+Event: 1.063 loading class org/apache/maven/settings/building/SettingsBuilder
+Event: 1.063 loading class org/apache/maven/settings/building/SettingsBuilder done
+Event: 1.063 loading class org/eclipse/sisu/plexus/PlexusLifecycleManager$1
+Event: 1.063 loading class org/eclipse/sisu/plexus/PlexusLifecycleManager$1 done
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder done
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder done
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder
+Event: 1.064 loading class org/apache/maven/settings/building/DefaultSettingsBuilder done
+Event: 1.064 loading class org/apache/maven/settings/validation/SettingsValidator
+Event: 1.064 loading class org/apache/maven/settings/validation/SettingsValidator done
+Event: 1.064 loading class org/apache/maven/settings/io/SettingsReader
+Event: 1.064 loading class org/apache/maven/settings/io/SettingsReader done
+Event: 1.064 loading class org/apache/maven/settings/io/SettingsWriter
+Event: 1.064 loading class org/apache/maven/settings/io/SettingsWriter done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsWriter done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader done
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader
+Event: 1.065 loading class org/apache/maven/settings/io/DefaultSettingsReader done
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator done
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator done
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator
+Event: 1.066 loading class org/apache/maven/settings/validation/DefaultSettingsValidator done
+Event: 1.066 loading class org/apache/maven/settings/building/DefaultSettingsBuildingRequest
+Event: 1.066 loading class org/apache/maven/settings/building/DefaultSettingsBuildingRequest done
+Event: 1.067 loading class org/apache/maven/execution/ExecutionEvent
+Event: 1.067 loading class org/apache/maven/execution/ExecutionEvent done
+Event: 1.067 loading class org/apache/maven/building/FileSource
+Event: 1.067 loading class org/apache/maven/building/FileSource done
+Event: 1.067 loading class java/util/Collections$SingletonMap
+Event: 1.068 loading class java/util/Collections$SingletonMap done
+Event: 1.068 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader
+Event: 1.068 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader done
+Event: 1.068 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader$ContentTransformer
+Event: 1.068 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader$ContentTransformer done
+Event: 1.069 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader$1
+Event: 1.069 loading class org/apache/maven/settings/io/xpp3/SettingsXpp3Reader$1 done
+Event: 1.070 loading class org/codehaus/plexus/util/xml/pull/EntityReplacementMap
+Event: 1.070 loading class org/codehaus/plexus/util/xml/pull/EntityReplacementMap done
+Event: 1.071 loading class org/eclipse/sisu/inject/MildElements$Itr
+Event: 1.071 loading class org/eclipse/sisu/inject/MildElements$Itr done
+Event: 1.074 loading class java/lang/Throwable$WrappedPrintStream
+
+
+Dynamic libraries:
+0x00007ff689d00000 - 0x00007ff689d49000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\bin\java.exe
+0x00007ffdf9ba0000 - 0x00007ffdf9d90000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffdf8b90000 - 0x00007ffdf8c42000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffdf7590000 - 0x00007ffdf7833000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffdf96a0000 - 0x00007ffdf9743000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffdf9960000 - 0x00007ffdf99fe000 	C:\Windows\System32\msvcrt.dll
+0x00007ffdf8af0000 - 0x00007ffdf8b87000 	C:\Windows\System32\sechost.dll
+0x00007ffdf81a0000 - 0x00007ffdf82c0000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffdf8f90000 - 0x00007ffdf9124000 	C:\Windows\System32\USER32.dll
+0x00007ffdf6b30000 - 0x00007ffdf6b51000 	C:\Windows\System32\win32u.dll
+0x00007ffdf9130000 - 0x00007ffdf9156000 	C:\Windows\System32\GDI32.dll
+0x00007ffdf73a0000 - 0x00007ffdf7534000 	C:\Windows\System32\gdi32full.dll
+0x00007ffdf72e0000 - 0x00007ffdf737e000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffdf78a0000 - 0x00007ffdf799a000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffde3a80000 - 0x00007ffde3d05000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.476_none_e6c4b11b130f2595\COMCTL32.dll
+0x00007ffdf7c50000 - 0x00007ffdf7f86000 	C:\Windows\System32\combase.dll
+0x00007ffdf7ba0000 - 0x00007ffdf7c20000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffdf9750000 - 0x00007ffdf977e000 	C:\Windows\System32\IMM32.DLL
+0x000000006a500000 - 0x000000006a5d2000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\msvcr100.dll
+0x000000006a5e0000 - 0x000000006ae9b000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\server\jvm.dll
+0x00007ffdf8d80000 - 0x00007ffdf8d88000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffdde540000 - 0x00007ffdde549000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffdf4b10000 - 0x00007ffdf4b34000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffdf2570000 - 0x00007ffdf257a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffdf9ad0000 - 0x00007ffdf9b3f000 	C:\Windows\System32\WS2_32.dll
+0x00007ffdf4ae0000 - 0x00007ffdf4b0d000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007ffdf7540000 - 0x00007ffdf758a000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffdd5630000 - 0x00007ffdd563f000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\verify.dll
+0x00007ffdc5b20000 - 0x00007ffdc5b49000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\java.dll
+0x00007ffdcbce0000 - 0x00007ffdcbcf6000 	C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin\zip.dll
+0x00007ffdf8400000 - 0x00007ffdf8ae5000 	C:\Windows\System32\SHELL32.dll
+0x00007ffdf8ee0000 - 0x00007ffdf8f89000 	C:\Windows\System32\shcore.dll
+0x00007ffdf6b60000 - 0x00007ffdf72de000 	C:\Windows\System32\windows.storage.dll
+0x00007ffdf6af0000 - 0x00007ffdf6b0f000 	C:\Windows\System32\profapi.dll
+0x00007ffdf6a80000 - 0x00007ffdf6aca000 	C:\Windows\System32\powrprof.dll
+0x00007ffdf6a70000 - 0x00007ffdf6a80000 	C:\Windows\System32\UMPDC.dll
+0x00007ffdf91d0000 - 0x00007ffdf9222000 	C:\Windows\System32\shlwapi.dll
+0x00007ffdf6b10000 - 0x00007ffdf6b21000 	C:\Windows\System32\kernel.appcore.dll
+0x00007ffdf7380000 - 0x00007ffdf7397000 	C:\Windows\System32\cryptsp.dll
+
+VM Arguments:
+jvm_args: -Dclassworlds.conf=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven\bin\m2.conf -Dmaven.home=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven -Dmaven.multiModuleProjectDirectory=C:\Users\MB-207\Documents\NetBeansProjects\SpringData1114_PSI 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 clean
+java_class_path (initial): C:\Program Files (x86)\NetBeans-11.2\netbeans\java\maven\boot\plexus-classworlds-2.5.2.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1
+PATH=C:\Program Files\AdoptOpenJDK\jre-11.0.5.10-hotspot\bin;C:\Program Files (x86)\AdoptOpenJDK\jre-8.0.232.09-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\bin;C:\Program Files\ojdkbuild\java-1.8.0-openjdk-1.8.0.232-1\jre\bin;C:\Users\MB-207\AppData\Local\Microsoft\WindowsApps;
+USERNAME=MB-study
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 18362 (10.0.18362.329)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, tsc, tscinvbit
+
+Memory: 4k page, physical 8345568k(856488k free), swap 8345568k(2852k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.232-b09) for windows-amd64 JRE (1.8.0_232-b09), built on Oct 20 2019 21:49:19 by "VssAdministrator" with MS VC++ 10.0 (VS2010)
+
+time: Sat Jan 09 17:32:00 2021
+timezone: 台北標準時間
+elapsed time: 1 seconds (0d 0h 0m 1s)
+
